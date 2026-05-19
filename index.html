@@ -1,0 +1,268 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Black+Ops+One&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;}
+.wrap{
+  background: linear-gradient(160deg,#fff8e1 0%,#fff3e0 40%,#fce4ec 100%);
+  border-radius:24px;
+  padding:28px 18px 24px;
+  text-align:center;
+  min-height:580px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid rgba(255,140,0,0.15);
+}
+.deco-circle{
+  position:absolute;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,200,0,0.18) 0%,transparent 70%);
+  top:-80px;left:-60px;pointer-events:none;
+}
+.deco-circle2{
+  position:absolute;width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,80,120,0.13) 0%,transparent 70%);
+  bottom:-80px;right:-50px;pointer-events:none;
+}
+.tag{
+  display:inline-block;
+  background:linear-gradient(90deg,#ff9800,#ff5722);
+  color:#fff;font-size:11px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:5px 18px;border-radius:30px;margin-bottom:14px;
+  box-shadow:0 3px 12px rgba(255,120,0,0.3);
+}
+.headline{
+  font-family:'Black Ops One',cursive;
+  font-size:clamp(22px,6vw,34px);
+  color:#1a1a1a;
+  line-height:1.15;
+  margin-bottom:6px;
+}
+.headline span{color:#ff5722;}
+.subline{
+  font-size:13px;color:#888;font-weight:600;margin-bottom:18px;
+}
+.offer-row{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:#fff;border:2px dashed #ffb300;border-radius:14px;
+  padding:10px 20px;margin-bottom:18px;
+  box-shadow:0 2px 12px rgba(255,180,0,0.12);
+}
+.offer-label{font-size:12px;color:#999;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.offer-amt{font-family:'Black Ops One',cursive;font-size:30px;color:#ff5722;line-height:1;}
+.offer-desc{font-size:12px;color:#666;font-weight:700;}
+.chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.chip{
+  background:#fff;border:1.5px solid #ffe0b2;border-radius:20px;
+  font-size:11px;color:#e65100;font-weight:700;padding:4px 12px;
+  box-shadow:0 1px 6px rgba(255,120,0,0.1);
+}
+.timer-card{
+  background:#fff;
+  border-radius:20px;
+  padding:22px 16px 18px;
+  margin:0 auto 16px;
+  max-width:300px;
+  box-shadow:0 6px 28px rgba(255,120,0,0.13);
+  border:2px solid rgba(255,152,0,0.2);
+  position:relative;
+}
+.tlabel{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#bbb;font-weight:700;margin-bottom:8px;}
+.tdisp{
+  font-family:'Black Ops One',cursive;
+  font-size:clamp(60px,16vw,82px);
+  color:#ff5722;
+  line-height:1;
+  letter-spacing:2px;
+  transition:color 0.15s;
+}
+.tdisp.go{color:#ff9800;}
+.tdisp.hot{color:#e53935;animation:shake 0.1s infinite;}
+@keyframes shake{0%{transform:translateX(-1px)}50%{transform:translateX(1px)}100%{transform:translateX(-1px)}}
+.target-note{
+  margin-top:10px;font-size:13px;color:#aaa;font-weight:700;
+}
+.target-note b{color:#ff5722;font-size:16px;}
+.pgwrap{
+  background:#f5f5f5;border-radius:10px;height:8px;
+  margin:0 auto 18px;max-width:300px;overflow:hidden;
+}
+.pgbar{
+  height:100%;background:linear-gradient(90deg,#ff9800,#ff5722);
+  border-radius:10px;width:0%;transition:width 0.05s linear;
+}
+.start-btn{
+  background:linear-gradient(135deg,#ff9800 0%,#ff5722 100%);
+  border:none;border-radius:50px;color:#fff;
+  font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;
+  padding:15px 50px;cursor:pointer;letter-spacing:1px;
+  box-shadow:0 6px 22px rgba(255,120,0,0.4);
+  transition:transform 0.12s,box-shadow 0.12s;
+  width:100%;max-width:300px;
+}
+.start-btn:hover{transform:scale(1.03);box-shadow:0 8px 28px rgba(255,120,0,0.5);}
+.start-btn:active{transform:scale(0.97);}
+.stop-btn{
+  background:linear-gradient(135deg,#e53935 0%,#c62828 100%);
+  border:none;border-radius:50px;color:#fff;
+  font-family:'Black Ops One',cursive;font-size:28px;
+  padding:16px 52px;cursor:pointer;
+  box-shadow:0 6px 24px rgba(200,0,0,0.35);
+  transition:transform 0.08s;
+  width:100%;max-width:300px;
+  animation:pulse-btn 0.7s infinite alternate;
+}
+@keyframes pulse-btn{0%{box-shadow:0 6px 24px rgba(200,0,0,0.35);}100%{box-shadow:0 6px 32px rgba(200,0,0,0.6);transform:scale(1.02);}}
+.stop-btn:active{transform:scale(0.95);animation:none;}
+.result-box{
+  display:none;border-radius:20px;padding:18px 14px 14px;
+  margin-top:10px;animation:popIn 0.45s cubic-bezier(.36,1.56,.64,1);
+}
+@keyframes popIn{0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
+.result-box.win{background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border:2px solid #66bb6a;}
+.result-box.lose{background:linear-gradient(135deg,#fff3e0,#fce4ec);border:2px solid #ffb300;}
+.remoji{font-size:44px;margin-bottom:6px;}
+.rtitle{font-family:'Black Ops One',cursive;font-size:clamp(20px,5vw,28px);margin-bottom:4px;}
+.rtitle.win{color:#2e7d32;}
+.rtitle.lose{color:#e65100;}
+.rsub{font-size:13px;color:#888;font-weight:600;margin-bottom:10px;}
+.miss-big{
+  font-family:'Black Ops One',cursive;
+  font-size:clamp(28px,8vw,42px);
+  color:#ff5722;
+  line-height:1.1;
+  margin:8px 0 4px;
+  animation:popIn 0.5s cubic-bezier(.36,1.56,.64,1);
+}
+.miss-tag{
+  display:inline-block;
+  background:linear-gradient(90deg,#ff9800,#ff5722);
+  color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;
+  padding:4px 16px;border-radius:20px;margin-bottom:8px;
+}
+.coupon{
+  background:linear-gradient(90deg,#ff9800,#ff5722);
+  border-radius:12px;padding:12px 20px;margin:10px 0 6px;
+}
+.clabel{font-size:10px;color:rgba(255,255,255,0.8);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.ccode{font-family:'Black Ops One',cursive;font-size:28px;color:#fff;letter-spacing:5px;}
+
+</style>
+
+<div class="wrap">
+  <div class="deco-circle"></div>
+  <div class="deco-circle2"></div>
+
+  <div class="tag">🛍️ Special Challenge</div>
+  <div class="headline">STOP THE<br><span>TIMER</span> CHALLENGE</div>
+  <div class="subline">On purchase of ₹2,500 & above</div>
+
+  <div class="offer-row">
+    <div>
+      <div class="offer-label">Win Up To</div>
+      <div class="offer-amt">₹1,100</div>
+    </div>
+    <div style="font-size:28px;">🎁</div>
+    <div>
+      <div class="offer-label">Instant</div>
+      <div class="offer-desc" style="font-size:16px;color:#ff5722;font-weight:900;">DISCOUNT!</div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip">⏱ Stop at exactly 10.00s</span>
+    <span class="chip">🎯 Only 1 Chance</span>
+  </div>
+
+  <div class="timer-card">
+    <div class="tlabel">Timer</div>
+    <div class="tdisp" id="td">00.00</div>
+    <div class="target-note">Stop at exactly <b>10.00s</b> to WIN!</div>
+  </div>
+
+  <div class="pgwrap"><div class="pgbar" id="pb"></div></div>
+
+  <div id="s1">
+    <button class="start-btn" onclick="startG()">▶ START THE TIMER</button>
+  </div>
+  <div id="s2" style="display:none;">
+    <button class="stop-btn" onclick="stopG()">⏹ STOP!</button>
+  </div>
+
+  <div class="result-box" id="rb">
+    <div class="remoji" id="re"></div>
+    <div class="rtitle" id="rt"></div>
+    <div id="rmiss" style="display:none;">
+      <div class="miss-tag">SO CLOSE!</div>
+      <div class="miss-big">PURCHASE AGAIN</div>
+      <div class="rsub" id="rs"></div>
+    </div>
+    <div id="rwin" style="display:none;">
+      <div class="rsub" id="rws"></div>
+      <div class="coupon">
+        <div class="clabel">Your Discount Code</div>
+        <div class="ccode">STOP1100</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let t0=null,af=null,done=false,used=false;
+function p(n){return(n<10?'0':'')+n;}
+function startG(){
+  if(used)return;
+  done=false;t0=performance.now();
+  document.getElementById('s1').style.display='none';
+  document.getElementById('s2').style.display='block';
+  document.getElementById('rb').style.display='none';
+  tick();
+}
+function tick(){
+  if(done)return;
+  let e=(performance.now()-t0)/1000;
+  let i=Math.floor(e),d=Math.round((e-i)*100);
+  document.getElementById('td').textContent=p(i)+'.'+p(d);
+  document.getElementById('pb').style.width=Math.min((e/15)*100,100)+'%';
+  let td=document.getElementById('td');
+  if(e>12){td.className='tdisp hot';}
+  else if(e>6){td.className='tdisp go';}
+  else{td.className='tdisp';}
+  if(e>=20){stopG(true);return;}
+  af=requestAnimationFrame(tick);
+}
+function stopG(auto){
+  if(done)return;
+  done=true;used=true;
+  cancelAnimationFrame(af);
+  document.getElementById('s2').style.display='none';
+  document.getElementById('td').className='tdisp';
+  let e=(performance.now()-t0)/1000;
+  let i=Math.floor(e),d=Math.round((e-i)*100);
+  let fd=p(i)+'.'+p(d);
+  document.getElementById('td').textContent=fd;
+  let diff=Math.abs(e-10.0);
+  let rb=document.getElementById('rb');
+  rb.style.display='block';
+  if(diff<=0.15){
+    rb.className='result-box win';
+    document.getElementById('re').textContent='🎉';
+    document.getElementById('rt').textContent='YOU WON!';
+    document.getElementById('rt').className='rtitle win';
+    document.getElementById('rmiss').style.display='none';
+    document.getElementById('rwin').style.display='block';
+    document.getElementById('rws').textContent='Stopped at '+fd+'s — Perfect! ₹1,100 discount is yours!';
+  } else {
+    rb.className='result-box lose';
+    let close=diff<=0.6;
+    document.getElementById('re').textContent=close?'😱':'😅';
+    document.getElementById('rt').textContent=close?'JUST MISSED IT!':'OH SO CLOSE!';
+    document.getElementById('rt').className='rtitle lose';
+    document.getElementById('rwin').style.display='none';
+    document.getElementById('rmiss').style.display='block';
+    document.getElementById('rs').textContent='You stopped at '+fd+'s — target was 10.00s. Just '+(diff*1000).toFixed(0)+'ms away! Try again on your next purchase!';
+  }
+}
+
+</script>
